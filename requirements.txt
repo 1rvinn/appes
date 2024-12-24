@@ -1,0 +1,14 @@
+langchain
+streamlit
+faiss-cpu
+streamlit-extras
+python-dotenv
+pdf2image
+ollama
+pymupdf
+easyocr
+PyPDF2
+numpy==2.0.1
+torch
+torchvision
+torchaudio
