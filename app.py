@@ -7,6 +7,7 @@ import os
 import ollama
 import io
 import numpy as np
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 model_name = "llama3.2-vision"
 pull_status = os.system(f"ollama pull {model_name}")
@@ -80,6 +81,12 @@ def main():
             st.write(text)
         else:
             st.error("No text could be extracted from the PDF.")
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000,
+            chunk_overlap=200,
+            length_function=len)
+        chunks = text_splitter.split_text(text=text)
+        st.write(chunks)
         # # pages = convert_from_bytes(pdf.read(), 600)
         # # text = ''
         # # for page in pages:
